@@ -4,7 +4,7 @@ MAINTAINER Scotty Logan "swl@stanford.edu"
 USER root
 
 RUN yum -y update && \
-    yum -y install wget unzip && \
+    yum -y install wget unzip mariadb mysql-connector-java.noarch && \
     yum clean all
 
 RUN cd /opt
