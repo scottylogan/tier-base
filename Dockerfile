@@ -1,15 +1,12 @@
-FROM   centos:7
+FROM centos:7
 MAINTAINER Scotty Logan <swl@stanford.edu>
 
 USER root
 
-RUN yum -y update && \
-    yum -y install curl openssl sudo unzip wget \
-                   httpd mod_ssl \
-                   java-1.7.0-openjdk-headless \
-                   tomcat \
-                   && \
-    yum clean all
+RUN rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+RUN yum -y update && yum -y install puppet-agent rubygems && gem install librarian-puppet
 
-EXPOSE 8080
-CMD /start.sh
+COPY puppet/modules/ /etc/puppetlabs/code/environments/production/modules/
+COPY puppet/manifests/ /etc/puppetlabs/code/environments/production/manifests/
+
+RUN . /etc/profile.d/puppet-agent.sh && puppet apply -v /etc/puppetlabs/code/environments/production/manifests/base.pp
