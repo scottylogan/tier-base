@@ -1,7 +1,0 @@
-# base/data/os/RedHat.yaml
----
-base::httpd_name: httpd
-base::tomcat_name: tomcat
-base::jre_name: java-1.7.0-openjdk
-base::jdk_name: java-1.7.0-openjdk-devel
-base::mod_ssl_name: mod_ssl

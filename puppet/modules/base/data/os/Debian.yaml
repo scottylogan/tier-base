@@ -1,7 +1,0 @@
-# base/data/os/Debian.yaml
----
-base::httpd_name: httpd
-base::tomcat_name: tomcat7
-base::jre_name: openjdk-7-jre-headless
-base::jdk_name: openjdk-7-jdk
-base::mod_ssl_name: none
